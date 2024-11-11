@@ -1,0 +1,536 @@
+/* Modern UI Theme */
+:root {
+  --primary-color: #1a237e;
+  --secondary-color: #0d47a1;
+  --accent-color: #2962ff;
+  --background-color: #f5f7fa;
+  --card-background: #ffffff;
+  --text-color: #2c3e50;
+  --border-radius: 12px;
+  --box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+  --transition: all 0.3s ease;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+}
+
+/* Header styling */
+.header {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  left: 0;
+  right: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.header h2 {
+  color: white;
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+/* Range inputs styling */
+.range-inputs {
+  margin-bottom: 0.5rem;
+}
+
+.range-input-group {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.range-input-group .form-control {
+  width: 100%;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  height: auto;
+  min-height: 0;
+}
+
+.range-input-group label {
+  font-size: 0.8rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Form controls */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 0.35rem;
+  display: block;
+  font-size: 0.9rem;
+}
+
+/* Input styling */
+.form-control {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  width: 100%;
+  transition: var(--transition);
+  max-width: 100%;
+  box-sizing: border-box;
+  font-size: 0.9rem;
+}
+
+.form-control:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(41, 98, 255, 0.1);
+}
+
+/* Card Layout Styles */
+.chart-card {
+  background: var(--card-background);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 20px;
+  width: 100%;
+  margin-bottom: 24px;
+  overflow: hidden; /* Prevent content overflow */
+}
+
+.chart-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px -2px rgba(0,0,0,0.15);
+}
+
+.chart-card h3 {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* Map specific styles */
+.map-card {
+  height: 480px; /* Precise fixed height */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 16px;
+}
+
+.map-card .card-header {
+  height: 48px; /* Fixed header height */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0 12px 0;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #eef2f7;
+  flex-shrink: 0; /* Prevent header from shrinking */
+}
+
+.map-card .card-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.map-card .chart-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.map-card .chart-controls select {
+  height: 32px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+  font-size: 14px;
+}
+
+/* Map container styles */
+.map-card #heatmap {
+  flex: 1;
+  height: calc(100% - 60px) !important; /* Subtract header height */
+  min-height: 360px; /* Minimum height for map */
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Folium map iframe styles */
+.map-card #heatmap iframe {
+  width: 100% !important;
+  height: 100% !important;
+  border: none;
+  border-radius: 8px;
+}
+
+/* Ensure proper map rendering */
+.map-card .folium-map {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .map-card {
+    height: 440px;
+  }
+}
+
+@media (max-width: 992px) {
+  .map-card {
+    height: 400px;
+  }
+  
+  .map-card #heatmap {
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .map-card {
+    height: 360px;
+    padding: 12px;
+  }
+  
+  .map-card .card-header {
+    height: 40px;
+    margin-bottom: 8px;
+  }
+  
+  .map-card #heatmap {
+    min-height: 280px;
+  }
+  
+  .map-card .card-header h3 {
+    font-size: 16px;
+  }
+}
+
+/* Opportunities table card */
+.opportunities-card {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 400px;
+  padding: 0; /* Remove padding to maximize space */
+}
+
+.opportunities-card .card-header {
+  padding: 16px 20px;
+  margin: 0;
+  border-bottom: 1px solid #eef2f7;
+  background: white;
+  border-radius: 8px 8px 0 0;
+}
+
+.opportunities-card .table-container {
+  padding: 0;
+  border-radius: 0 0 8px 8px;
+}
+
+/* Main layout containers */
+.main-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-wrapper {
+  display: flex;
+  gap: 1.5rem;
+  height: calc(100vh - 80px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .map-card {
+    height: 450px;
+  }
+  
+  .opportunities-card {
+    height: calc(100vh - 550px);
+  }
+}
+
+@media (max-width: 992px) {
+  .map-card {
+    height: 400px;
+  }
+  
+  .opportunities-card {
+    height: 500px;
+  }
+  
+  .main-container {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .map-card {
+    height: 350px;
+  }
+  
+  .opportunities-card {
+    height: 400px;
+  }
+  
+  .main-container {
+    padding: 0 0.5rem;
+  }
+}
+
+/* Button styling */
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(41, 98, 255, 0.2);
+}
+
+/* Table styling */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 8px;
+  background: white;
+}
+
+.table {
+  width: 100%;
+  min-width: 800px;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 0;
+}
+
+.table thead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: #f8fafc;
+}
+
+.table th {
+  background-color: #f8fafc;
+  font-weight: 600;
+  text-align: left;
+  border-bottom: 2px solid #eef2f7;
+  white-space: nowrap;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  height: 40px;
+}
+
+.table td {
+  border-bottom: 1px solid #eef2f7;
+  font-size: 0.9rem;
+  line-height: 1.2;
+  vertical-align: middle;
+  height: 40px;
+}
+
+/* Column specific widths and padding */
+.table th, .table td {
+  padding: 8px 5px;
+}
+
+.table th:first-child, .table td:first-child { padding-left: 16px; }
+.table th:last-child, .table td:last-child { padding-right: 16px; }
+
+/* Fixed column widths */
+.table th:nth-child(1), .table td:nth-child(1) { width: 180px; }  /* Address */
+.table th:nth-child(2), .table td:nth-child(2) { width: 120px; }  /* City */
+.table th:nth-child(3), .table td:nth-child(3) { width: 50px; }   /* State */
+.table th:nth-child(4), .table td:nth-child(4) { width: 60px; }   /* ZIP */
+.table th:nth-child(5), .table td:nth-child(5) { width: 100px; }  /* Price */
+.table th:nth-child(6), .table td:nth-child(6) { width: 80px; }   /* Type */
+.table th:nth-child(7), .table td:nth-child(7) { width: 90px; }   /* Beds/Baths */
+.table th:nth-child(8), .table td:nth-child(8) { width: 70px; }   /* Sqft */
+.table th:nth-child(9), .table td:nth-child(9) { width: 80px; }   /* Year Built */
+.table th:nth-child(10), .table td:nth-child(10) { width: 80px; } /* Cap Rate */
+.table th:nth-child(11), .table td:nth-child(11) { width: 100px; }/* Monthly Rent */
+.table th:nth-child(12), .table td:nth-child(12) { width: 70px; } /* HOA */
+.table th:nth-child(13), .table td:nth-child(13) { width: 100px; }/* Appreciation */
+.table th:nth-child(14), .table td:nth-child(14) { width: 100px; }/* Investment Score */
+.table th:last-child, .table td:last-child { width: 80px; }       /* Location */
+
+/* Cell content handling */
+.table td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Hover and zebra striping */
+.table tbody tr:hover { background-color: rgba(41, 98, 255, 0.02); }
+.table tbody tr:nth-child(even) { background-color: #fafbfc; }
+
+/* Map link styling */
+.table td:last-child {
+  text-align: center;
+}
+
+.map-link {
+  text-decoration: none;
+  color: var(--accent-color);
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: var(--transition);
+  background: rgba(41, 98, 255, 0.1);
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.map-link:hover {
+  background: rgba(41, 98, 255, 0.2);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(41, 98, 255, 0.1);
+}
+
+/* Sidebar styling */
+.sidebar {
+  background-color: var(--card-background);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 1.25rem;
+  height: calc(100vh - 120px);
+  position: sticky;
+  top: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 90vh;
+}
+
+.sidebar-title {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #eef2f7;
+}
+
+/* Grid container */
+.grid-container {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+/* Responsive layout */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+.col-md-3,
+.col-md-9 {
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+.col-md-3 {
+  width: 25%;
+}
+
+.col-md-9 {
+  width: 75%;
+}
+
+/* Plotly specific styles */
+.js-plotly-plot {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.plotly-container {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+}
+
+/* Ensure map takes full height of container */
+.map-card .js-plotly-plot,
+.map-card .plotly-container {
+  height: 100% !important;
+  min-height: 400px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .col-md-3,
+  .col-md-9 {
+    width: 100%;
+  }
+  
+  .sidebar {
+    height: auto;
+    position: relative;
+    top: 0;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0.75rem 1rem;
+  }
+  
+  .header h2 {
+    font-size: 1.4rem;
+  }
+  
+  .main-container {
+    padding: 0 0.5rem;
+  }
+  
+  .chart-card {
+    padding: 1rem;
+  }
+  
+  .range-input-group {
+    grid-template-columns: 1fr;
+  }
+}
