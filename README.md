@@ -2,6 +2,9 @@
 
 This Shiny web application helps real estate investors optimize their property search based on their specific priorities and budget constraints.
 
+# Deployed EC2 Instance Link:
+http://3.101.14.134
+
 ## Features
 
 - **Investment Parameters**
